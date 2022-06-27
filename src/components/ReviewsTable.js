@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import ReviewList from './ReviewList';
-
-const ReviewsTable = (props) => {
-    if(props.reviews){
+class ReviewsTable extends Component {
+    render() {
         return <div className='table-responsive'>
             <table className="table table-hover">
                 <thead className='table-success'>
@@ -11,15 +11,16 @@ const ReviewsTable = (props) => {
                         <th scope="col">Movie</th>
                         <th scope="col">Name</th>
                         <th scope="col">Review</th>
+                        <th scope="col">Date</th>
                         <th scope="col">Rating</th>
                     </tr>
                 </thead>
                 <tbody className="table-group-divider">
-                    <ReviewList reviews={props.reviews} />
+                    <ReviewList />
                 </tbody>
             </table>
         </div>
     }
-};
+}
 
-export default ReviewsTable;
+export default connect()(ReviewsTable);
