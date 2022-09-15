@@ -3,14 +3,14 @@ import MoviesAPI from '../api/Movies';
 export const fetchMovies = () => {
     return async (dispatch) => {
         const response = await MoviesAPI.get('/api/get_movies');
-        dispatch({ type: 'FETCH_MOVIES', payload: response.data });
+        dispatch({ type: 'FETCH_MOVIES', payload: response.data[0] });
     };
 };
 
 export const fetchMovieReviews = () => {
     return async (dispatch) => {
         const response = await MoviesAPI.get('/api/get_reviews');
-        dispatch({ type: 'FETCH_MOVIE_REVIEWS', payload: response.data });
+        dispatch({ type: 'FETCH_MOVIE_REVIEWS', payload: response.data[0] });
     };
 };
 
@@ -22,9 +22,10 @@ export const populateForm = (form_value, name, value) => {
     };
 };
 
-export const submitForm = (form_value) => {
+export const submitForm = (submit_type, form_value) => {
     return async (dispatch) => {
-        const response = await MoviesAPI.post('/api/create_rating', {form_data: form_value});
+        let url = (submit_type === 'rate_movie') ? '/api/create_rating' : '/api/add_movie';
+        const response = await MoviesAPI.post(url, {form_data: form_value});
 
         dispatch({ type: 'SUBMIT_FORM', payload: response });
     };

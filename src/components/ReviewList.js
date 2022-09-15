@@ -31,7 +31,7 @@ class ReviewList extends Component {
         else{
             reviews_list.push(
                 <tr key="no_reviews">
-                    <td colSpan={5} className="text-center fw-bold text-muted">No Reviews</td>
+                    <td colSpan={6} className="text-center fw-bold text-muted">No Reviews</td>
                 </tr>
             );
         }

@@ -23,7 +23,7 @@ const formValueReducer = (formValueReducer = {form_value: {}}, action) => {
 
 const submitFormReducer = (submitFormReducer = {status: false}, action) => {
     if (action.type === 'SUBMIT_FORM'){
-        if(action.payload.request.status === 200)
+        if(action.payload.request.data !== '' && action.payload.request.status === 200)
             submitFormReducer.status = true;
 
         return { status: submitFormReducer.status }

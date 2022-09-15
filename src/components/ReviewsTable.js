@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ReviewList from './ReviewList';
 class ReviewsTable extends Component {
     render() {
-        return <div className='table-responsive'>
+        return <div className='reviews_table table-responsive'>
             <table className="table table-hover">
                 <thead className='table-success'>
                     <tr>
